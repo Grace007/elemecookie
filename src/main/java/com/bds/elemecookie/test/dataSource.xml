@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+
+
+    <!-- ApplicationContext -->
+    <bean id="springContextUtil" class="com.bds.elemecookie.utils.SpringContextUtil"></bean>
+
+    <bean id="initApplicationListener" class="com.bds.elemecookie.utils.InitApplicationListener"></bean>
+    <bean id="startJob" class="com.bds.elemecookie.job.StartJob"></bean>
+
+    <bean id="o2oDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="username" value="new_root"/>
+        <property name="password" value="@Hyipsos"/>
+        <property name="url" value="jdbc:mysql://rou1.bds-analytics.com:13010/buzz_o2o?useUnicode=true"/>
+    </bean>
+
+    <bean id="o2oDao" class="org.nutz.dao.impl.NutDao">
+        <property name="dataSource">
+            <ref local="o2oDataSource"/>
+        </property>
+    </bean>
+
+</beans>
